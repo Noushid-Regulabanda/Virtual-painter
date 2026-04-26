@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Drawing App</title>
+  <Link rel="stylesheet" href="/VirtualPainter/index.css">
+</head>
+
+<body>
+  <h2 class="sr-only">Air drawing app with fixed 2-finger erase gesture</h2>
+
+  <div id="app">
+    <!-- Toolbar -->
+    <div id="toolbar">
+      <div id="colors" style="display:flex; gap:6px; align-items:center;"></div>
+
+      <div class="sep"></div>
+      <span id="mode-badge">Idle</span>
+
+      <div style="flex:1;"></div>
+
+      <button onclick="clearCanvas()"
+        style="padding:5px 12px; font-size:13px; font-weight:500; border:0.5px solid var(--color-border-secondary); border-radius:var(--border-radius-md); background:transparent; color:var(--color-text-primary); cursor:pointer;">
+        Clear
+      </button>
+
+      <button onclick="saveDrawing()"
+        style="padding:5px 12px; font-size:13px; font-weight:500; border:0.5px solid var(--color-border-secondary); border-radius:var(--border-radius-md); background:transparent; color:var(--color-text-primary); cursor:pointer;">
+        Save
+      </button>
+
+      <div class="sep"></div>
+
+      <div id="size-wrap">
+        Size
+        <input type="range" id="size-slider" min="2" max="40" value="8" step="1"
+          oninput="brushSize=+this.value; document.getElementById('size-val').textContent=this.value">
+        <span id="size-val">8</span>px
+      </div>
+    </div>
+
+    <!-- Canvas Area -->
+    <div id="canvas-wrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="draw-canvas"></canvas>
+      <div id="cursor"></div>
+
+      <div id="color-ring">
+        <div id="ring-label">3 fingers — move left/right</div>
+        <div id="color-ring-inner"></div>
+      </div>
+
+      <div id="status">Starting camera...</div>
+    </div>
+
+    <!-- Hint Bar -->
+    <div id="hint-bar">
+      <span class="hint">1 finger = draw</span>
+      <span class="hint">2 fingers = erase</span>
+      <span class="hint">3 fingers = change color</span>
+      <span class="hint">4+ fingers = lift pen</span>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="/VirtualPainter/index.js"></script>
+</body>
+
+</html>

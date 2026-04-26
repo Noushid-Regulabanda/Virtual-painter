@@ -1,0 +1,195 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ROOT VARIABLES */
+:root {
+    --bg: #0f172a;
+    --card: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --text: #e5e7eb;
+    --text-light: #9ca3af;
+    --accent: #3b82f6;
+}
+
+/* BODY */
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* APP CONTAINER */
+#app {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* TOOLBAR (CENTERED & CLEAN) */
+#toolbar {
+    width: 95%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 15px;
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    margin-top: 10px;
+}
+
+/* COLOR DOTS */
+.color-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.color-dot:hover {
+    transform: scale(1.15);
+}
+
+.color-dot.active {
+    border: 2px solid white;
+    transform: scale(1.2);
+}
+
+/* BUTTONS */
+button {
+    padding: 6px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* MODE BADGE */
+#mode-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#mode-badge.draw {
+    background: #1e40af;
+    color: #fff;
+}
+
+#mode-badge.erase {
+    background: #7f1d1d;
+    color: #fff;
+}
+
+#mode-badge.color {
+    background: #5b21b6;
+    color: #fff;
+}
+
+/* FULL SCREEN CANVAS AREA */
+#canvas-wrap {
+    position: relative;
+    width: 100vw;
+    /* FULL WIDTH */
+    height: 85vh;
+    /* LARGE HEIGHT */
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: #000;
+    overflow: hidden;
+}
+
+/* VIDEO */
+#video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+    opacity: 0.9;
+}
+
+/* DRAW CANVAS */
+#draw-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* STATUS */
+#status {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* CURSOR */
+#cursor {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid white;
+    pointer-events: none;
+}
+
+/* COLOR RING */
+#color-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#color-ring-inner {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* HINT BAR */
+#hint-bar {
+    width: 95%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.hint {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-light);
+}
